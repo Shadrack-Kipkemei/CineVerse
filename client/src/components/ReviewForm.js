@@ -1,18 +1,18 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { submitReview } from "../services/api";
 
 function ReviewForm({ movieId }) {
   const [rating, setRating] = useState("");
   const [comment, setComment] = useState("");
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const reviewData = { rating, comment, movie_id: movieId };
     submitReview(reviewData)
       .then(() => {
-        history.push(`/movie/${movieId}`);
+        navigate.push(`/movie/${movieId}`);
       })
       .catch((err) => console.log("Error submitting review:", err));
   };

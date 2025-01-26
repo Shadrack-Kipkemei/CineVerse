@@ -1,4 +1,42 @@
-.navbar {
-  z-index: 999;
-  position: relative;
+.custom-navbar {
+  background-color: #E6EBF0 !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+
+
+.navbar-brand {
+  font-size: 1.8rem;
+  color: #112A46 !important; 
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+
+.navbar-toggler {
+  border: none;
+}
+
+.nav-link {
+  color: #112A46 !important;
+  font-size: 1rem;
+  margin-left: 10px;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #e74c3c !important; 
+  text-decoration: underline;
+}
+
+/* Responsive Navbar */
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    padding: 1rem;
+  }
+  .navbar-nav .nav-item {
+    margin-bottom: 0.5rem;
+  }
+}
+
+

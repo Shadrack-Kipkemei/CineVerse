@@ -1,10 +1,14 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import App from "./App";
+import ReactDOM from "react-dom/client";  
+import AppRoutes from "./routes/Routes"; 
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
-ReactDOM.render(
-    <App />,
-    document.getElementById("root")
+
+const root = ReactDOM.createRoot(document.getElementById("root"));  // Create a root element
+
+root.render(
+  <React.StrictMode>
+    <AppRoutes />
+  </React.StrictMode>
 );
