@@ -1,8 +1,10 @@
-from server import app, db
+from server import create_app, db
 from server.models import User, Movie 
 
+app = create_app()
+
 with app.app_context():
-    db.create_all()
+    # db.create_all()
 
     movie1 = Movie(title="The Shawshank Redemption", genre="Drama", release_year=1994)
     movie2 = Movie(title="The Dark Knight", genre="Action", release_year=2008)
@@ -27,4 +29,6 @@ with app.app_context():
     db.session.add(movie10)
     db.session.commit()
 
-    print("Movies added successfully!")
+    # Use inspect to get the table names
+    inspector = db.inspect(db.engine)
+    print(inspector.get_table_names())

@@ -1,8 +1,8 @@
-from flask_sqlalchemy import SQLAlchemy 
+from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from sqlalchemy_serializer import SerializerMixin
 
-db = SQLAlchemy()
+db = SQLAlchemy()  # Database object
 
 class User(db.Model, SerializerMixin):
     __tablename__ = 'users'
@@ -27,7 +27,7 @@ class Movie(db.Model, SerializerMixin):
     title = db.Column(db.String, nullable=False)
     genre = db.Column(db.String, nullable=False)
     release_year = db.Column(db.Integer, nullable=False)
-    
+
     reviews = db.relationship('Review', backref='movie', lazy=True)
 
 
