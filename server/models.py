@@ -1,4 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy 
+from flask_bcrypt import Bcrypt
 from sqlalchemy_serializer import SerializerMixin
 
 db = SQLAlchemy()
@@ -6,12 +7,17 @@ db = SQLAlchemy()
 class User(db.Model, SerializerMixin):
     __tablename__ = 'users'
 
-    id = db.Column(db.Interger, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String, nullable=False)
     email = db.Column(db.String, unique=True, nullable=False)
     password = db.Column(db.String, nullable=False)
 
     reviews = db.relationship('Review', backref='user', lazy=True)
+
+    # Method to check password
+    def check_password(self, password):
+        bcrypt = Bcrypt()
+        return bcrypt.check_password_hash(self.password, password)
 
 
 class Movie(db.Model, SerializerMixin):
