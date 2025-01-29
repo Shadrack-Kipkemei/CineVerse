@@ -5,6 +5,7 @@ from flask_bcrypt import Bcrypt
 from server.config import Config
 from server.models import db, User, Movie, Review
 import bcrypt  
+from flask_cors import CORS 
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -48,6 +49,13 @@ class UserLoginResource(Resource):
         # Successful login
         return {"message": "Login successful", "user": user.to_dict()}, 200
 
+
+# User logout route
+class UserLogoutResource(Resource):
+    def post(self):
+        return {"message": "Logout successful"}, 200
+
+
 # Movie routes (CRUD)
 class MovieListResource(Resource):
     def get(self):
@@ -69,19 +77,39 @@ class MovieListResource(Resource):
 class ReviewListResource(Resource):
     def post(self):
         data = request.get_json()
+
+        # Ensure required fields are present
+        if "rating" not in data or "comment" not in data or "movie_id" not in data or "user_id" not in data:
+            return {"message": "Missing required fields"}, 400
+
+        # Check if the movie exists
+        movie = Movie.query.get(data["movie_id"])
+        if not movie:
+            return {"message": "Movie not found"}, 404
+        
+        # Check if the user exists
+        user = User.query.get(data["user_id"])
+        if not user:
+            return {"message": "User not found"}, 404
+
+        # Create and save the review
         new_review = Review(
-            rating=data.get("rating"),
-            comment=data.get("comment"),
-            movie_id=data.get("movie_id"),
-            user_id=1  
+            rating=data["rating"],
+            comment=data["comment"],
+            movie_id=data["movie_id"],
+            user_id=data["user_id"]
         )
+
         db.session.add(new_review)
         db.session.commit()
+
         return new_review.to_dict(), 201
+
 
 # Add resources to the API
 api.add_resource(UserListResource, '/users')
 api.add_resource(UserLoginResource, '/login')  
+api.add_resource(UserLogoutResource, '/logout')
 api.add_resource(MovieListResource, '/movies')
 api.add_resource(ReviewListResource, '/reviews')
 

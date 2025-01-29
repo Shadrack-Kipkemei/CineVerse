@@ -14,6 +14,8 @@ class User(db.Model, SerializerMixin):
 
     reviews = db.relationship('Review', backref='user', lazy=True)
 
+    serialize_rules = ('-reviews.user', '-password')
+
     # Method to check password
     def check_password(self, password):
         bcrypt = Bcrypt()
@@ -30,6 +32,8 @@ class Movie(db.Model, SerializerMixin):
 
     reviews = db.relationship('Review', backref='movie', lazy=True)
 
+    serialize_rules = ('-reviews.movie',)
+
 
 class Review(db.Model, SerializerMixin):
     __tablename__ = 'reviews'
@@ -39,3 +43,5 @@ class Review(db.Model, SerializerMixin):
     comment = db.Column(db.String, nullable=False)
     movie_id = db.Column(db.Integer, db.ForeignKey('movies.id'), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+
+    serialize_rules = ('-movie.reviews', '-user.reviews')
