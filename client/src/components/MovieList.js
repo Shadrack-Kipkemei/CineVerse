@@ -64,8 +64,9 @@ const MovieList = () => {
             <div className="card shadow">
               <div className="card-body text-center">
                 <h5 className="card-title">{movie.title}</h5>
-                <p className="card-text">Genre: {movie.genre}</p>
-                <p className="card-text">Release Year: {movie.release_year}</p>
+                {/* <p className="card-text">Genre: {movie.genre}</p> */}
+                {/* <p className="card-text">Release Year: {movie.release_year}</p> */}
+                <a href={movie.link} target="_blank" rel="noopener noreferrer">Watch Now</a>
                 <Link to={`/movies/${movie.id}`} className="btn btn-primary mb-2">
                   Movie Details
                 </Link>

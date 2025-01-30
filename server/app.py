@@ -4,6 +4,8 @@ from flask_bcrypt import Bcrypt
 from server.models import db, User, Movie, Review
 import bcrypt  
 from flask_cors import CORS
+from flask_migrate import Migrate 
+from flask_sqlalchemy import SQLAlchemy 
 
 
 app = Flask(__name__)
@@ -15,6 +17,7 @@ app.config.from_object('server.config.Config')
 db.init_app(app)
 bcrypt = Bcrypt(app)  
 
+migrate = Migrate(app, db)
 api = Api(app)
 
 # User routes
@@ -67,7 +70,8 @@ class MovieListResource(Resource):
         new_movie = Movie(
             title=data["title"],
             genre=data["genre"],
-            release_year=data["release_year"]
+            release_year=data["release_year"],
+            link=data["link"]
         )
 
         db.session.add(new_movie)

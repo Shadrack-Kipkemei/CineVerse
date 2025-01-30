@@ -4,11 +4,12 @@ function AddMovieForm({ addMovie }) {
     const [title, setTitle] = useState('');
     const [genre, setGenre] = useState('');
     const [releaseYear, setReleaseYear] = useState('');
+    const [link, setLink] = useState('');
     const [error, setError] = useState('');
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const movieData = { title, genre, release_year: releaseYear };
+        const movieData = { title, genre, release_year: releaseYear, link };
 
         try {
             const response = await fetch('http://localhost:5000/movies', {
@@ -25,6 +26,7 @@ function AddMovieForm({ addMovie }) {
                 setTitle('');
                 setGenre('');
                 setReleaseYear('');
+                setLink('')
             } else {
                 setError(data.message || 'Failed to add movie');
             }
@@ -66,6 +68,16 @@ function AddMovieForm({ addMovie }) {
                         className="form-control"
                         value={releaseYear}
                         onChange={(e) => setReleaseYear(e.target.value)}
+                        required
+                    />
+                </div>
+                <div className="form-group">
+                    <label>Link</label>
+                    <input
+                        type="number"
+                        className="form-control"
+                        value={link}
+                        onChange={(e) => setLink(e.target.value)}
                         required
                     />
                 </div>

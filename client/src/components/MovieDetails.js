@@ -32,6 +32,9 @@ const MovieDetails = () => {
         <h2>Title: {movie.title}</h2>
         <p><strong>Genre:</strong> {movie.genre}</p>
         <p><strong>Release Year:</strong> {movie.release_year}</p>
+        <p>
+          <strong>Watch:</strong> <a href={movie.link} target="_blank" rel="noopener noreferrer">Click here to watch</a>
+        </p>
       </div>
     </div>
   );

@@ -21,6 +21,7 @@ class Movie(db.Model, SerializerMixin):
     title = db.Column(db.String, nullable=False)
     genre = db.Column(db.String, nullable=False)
     release_year = db.Column(db.Integer, nullable=False)
+    link = db.Column(db.String, nullable=True)
 
     reviews = db.relationship('Review', backref='movie', lazy=True)
 
@@ -33,5 +34,5 @@ class Review(db.Model, SerializerMixin):
     comment = db.Column(db.String, nullable=False)
     movie_id = db.Column(db.Integer, db.ForeignKey('movies.id'), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    
+
     serialize_rules = ('-movie.reviews', '-user.reviews')
