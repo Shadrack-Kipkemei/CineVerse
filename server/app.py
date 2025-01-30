@@ -96,6 +96,10 @@ class MovieResource(Resource):
 
 # Review routes
 class ReviewListResource(Resource):
+    def get(self):
+        reviews = Review.query.all()
+        return [review.to_dict() for review in reviews], 200
+
     def post(self):
         data = request.get_json()
 
