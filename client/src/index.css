@@ -7,10 +7,10 @@
 
 body {
   font-family: 'Arial', sans-serif;
-  background-color: #B3C2D1;  /* Light background for a calm feeling */
-  color: #333333;  /* Dark text for readability */
+  background-color: #B3C2D1;  
+  color: #333333;  
   line-height: 1.6;
-  /* padding-top: 60px;   */
+
 }
 
 /* Card-like container for all main sections */
@@ -18,7 +18,7 @@ body {
   background-color: #E6EBF0;
   border-radius: 10px;
   padding: 30px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); 
   margin-bottom: 30px;
 }
 
@@ -92,13 +92,13 @@ body {
 
 /* Navbar */
 .navbar {
-  background-color: #CCD6E0;  /* Dark background */
+  background-color: #CCD6E0;  
   padding: 15px 0;
 }
 
 .navbar .navbar-brand {
   font-size: 1.8rem;
-  color:#112A46;  /* Ensure text is white for visibility */
+  color:#112A46;  
   font-weight: bold;
   text-transform: uppercase;
   margin-left: 0;
@@ -109,21 +109,21 @@ body {
 }
 
 .navbar-nav .nav-item .nav-link {
-  color: #112A46;  /* White text for links */
+  color: #112A46;  
   padding: 10px 15px;
-  transition: color 0.3s ease;  /* Smooth transition for color change */
+  transition: color 0.3s ease;  
 }
 
 .navbar-nav .nav-item .nav-link:hover {
-  color: #ff7f50; /* Orange color on hover */
+  color: #ff7f50; 
 }
 
 /* Adjusting the button text color on hover */
 .navbar-nav .nav-item .btn {
-  color:#112A46;  /* Ensures button text is visible */
+  color:#112A46;  
 }
 .navbar-nav .nav-item .btn:hover {
-  color:#112A46;  /* Keeps text color on hover */
+  color:#112A46;  
 }
 
 /* Page title and headings */
@@ -135,7 +135,7 @@ h2, h3 {
 
 /* Error/Loading message styles */
 .error, .loading {
-  color: #d9534f; /* Bootstrap red */
+  color: #d9534f; 
   font-size: 1.2rem;
   margin-top: 20px;
   text-align: center;

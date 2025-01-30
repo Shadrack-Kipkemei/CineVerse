@@ -7,6 +7,7 @@ import MovieDetails from "../components/MovieDetails";
 import SignupForm from "../components/SignupForm";
 import LoginForm from "../components/LoginForm";  
 import ReviewForm from "../components/ReviewForm";
+import AddMovieForm from "../components/AddMovieForm";
 
 function AppRoutes() {
   return (
@@ -20,6 +21,7 @@ function AppRoutes() {
           <Route path="/movies/:id/review" element={<ReviewForm />} />
           <Route path="/signup" element={<SignupForm />} />
           <Route path="/login" element={<LoginForm />} />
+          <Route path="/add-movie" element={<AddMovieForm />} />
         </Routes>
       </div>
     </Router>

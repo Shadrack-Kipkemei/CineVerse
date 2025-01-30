@@ -8,7 +8,7 @@ db = SQLAlchemy()
 migrate = Migrate()
 
 # Import the models after db initialization to avoid circular imports
-from .models import Movie, User
+from .models import Movie, User, Review 
 
 def create_app():
     app = Flask(__name__)
@@ -17,5 +17,7 @@ def create_app():
     # Initialize the app with db and migrate objects
     db.init_app(app)
     migrate.init_app(app, db)
+
+    
     
     return app
