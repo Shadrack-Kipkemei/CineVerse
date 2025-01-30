@@ -1,95 +1,58 @@
-import React, { useState, useEffect } from "react";
-import { getMovies } from "../services/api";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { getMovies } from "../services/api";
 
 
-function MovieList() {
-    const [movies, setMovies] = useState([]);
+const MovieList = () => {
+  const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-    useEffect(() => {
-        getMovies()
-        .then((response) => setMovies(response.data))
-        .catch((err) => console.log("Error fetching movies:", err));
+  useEffect(() => {
+    const fetchMovies = async () => {
+      try {
+        const response = await getMovies();
+        setMovies(response.data);
+        setLoading(false);
+      } catch (err) {
+        setError("Failed to fetch movies");
+        setLoading(false);
+      }
+    };
 
-    }, []);
+    fetchMovies();
+  }, []);
 
-    return (
-        <div className="container mt-4">
-            <h2>Movies</h2>
-            <div className="row">
-                {movies.map((movie) => (
-                    <div key={movie.id} className="col-md-4">
-                        <div className="card mb-4">
-                            <img
-                                src={`https://via.placeholder.com/150?text=${movie.title}`}
-                                className="card-img-top"
-                                alt={movie.title}
-                            />
-                            <div className="card-body">
-                                <h5 className="card-title">{movie.title}</h5>
-                                <p className="card-text">{movie.genre}</p>
-                                <Link to={`/movie/${movie.id}`} className="btn btn-primary">
-                                    View Details 
-                                </Link>
-                            </div>
-                        </div> 
-                    </div> 
-                ))}
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
+
+  return (
+    <div className="container mt-4">
+      <h2 className="mb-4">Movie List</h2>
+      <div className="row">
+        {movies.map((movie) => (
+          <div key={movie.id} className="col-md-4 mb-4">
+            <div className="card shadow">
+              <div className="card-body text-center">
+                <h5 className="card-title">{movie.title}</h5>
+                <Link to={`/movies/${movie.id}`} className="btn btn-primary mb-2">
+                  Movie Details
+                </Link>
+                <Link to={`/movies/${movie.id}/review`} className="btn btn-secondary">
+                  Leave a Review
+                </Link>
+              </div>
             </div>
-        </div>
-    );
-}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
 
-export default MovieList
-
-
-
-// import React from "react";
-// import { Link } from "react-router-dom";
-
-// const movies = [
-//   {
-//     id: 1,
-//     title: "Inception",
-//     genre: "Sci-Fi",
-//     release_year: 2010,
-//   },
-//   {
-//     id: 2,
-//     title: "The Dark Knight",
-//     genre: "Action",
-//     release_year: 2008,
-//   },
-//   {
-//     id: 3,
-//     title: "The Matrix",
-//     genre: "Sci-Fi",
-//     release_year: 1999,
-//   },
-// ];
-
-// function MovieList() {
-//   return (
-//     <div className="container mt-4">
-//       <h2>Movie List</h2>
-//       <div className="row">
-//         {movies.map((movie) => (
-//           <div className="col-md-4" key={movie.id}>
-//             <div className="card mb-4">
-//               <div className="card-body">
-//                 <h5 className="card-title">{movie.title}</h5>
-//                 <p className="card-text">{movie.genre}</p>
-//                 <p className="card-text">Release Year: {movie.release_year}</p>
-//                 <Link to={`/movie/${movie.id}`} className="btn btn-primary">
-//                   View Details
-//                 </Link>
-//               </div>
-//             </div>
-//           </div>
-//         ))}
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default MovieList;
+export default MovieList;

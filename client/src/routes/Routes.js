@@ -14,8 +14,8 @@ function AppRoutes() {
       <div className="container mt-4">
         <Routes>  
           <Route path="/" element={<MovieList />} />
-          <Route path="/movie/:id" element={<MovieDetails />} />
-          <Route path="/movie/:id/review" element={<ReviewForm />} />
+          <Route path="/movies/:id" element={<MovieDetails />} />
+          <Route path="/movies/:id/review" element={<ReviewForm />} />
           <Route path="/signup" element={<SignupForm />} />
           <Route path="/login" element={<LoginForm />} />
         </Routes>

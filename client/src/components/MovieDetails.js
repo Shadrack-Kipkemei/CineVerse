@@ -1,47 +1,40 @@
-import React, {useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { useParams } from "react-router-dom";
-import {getMovie} from "../services/api";
-import ReviewForm from "./ReviewForm";
 
 
-function MovieDetails() {
-    const { id } = useParams()
-    const [movie, setMovie] = useState(null);
+const MovieDetails = () => {
+  const { id } = useParams(); // Get the movie ID from URL
+  const [movie, setMovie] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-    useEffect(() => {
-        getMovie(id)
-        .then((response) => setMovie(response.data))
-        .catch((err) => console.log("Error fetching movie details:", err));
+  useEffect(() => {
+    const fetchMovieDetails = async () => {
+      try {
+        const response = await axios.get(`http://localhost:5000/movies/${id}`);
+        setMovie(response.data);
+        setLoading(false);
+      } catch (error) {
+        setError("Failed to fetch movie details");
+        setLoading(false);
+      }
+    };
+    fetchMovieDetails();
+  }, [id]);
 
-    }, [id]);
+  if (loading) return <p>Loading movie details...</p>;
+  if (error) return <p>{error}</p>;
 
-    if (!movie) return <div>Loading...</div>;
+  return (
+    <div className="container mt-4">
+      <div className="card p-4 shadow">
+        <h2>Title: {movie.title}</h2>
+        <p><strong>Genre:</strong> {movie.genre}</p>
+        <p><strong>Release Year:</strong> {movie.release_year}</p>
+      </div>
+    </div>
+  );
+};
 
-    return (
-        <div className="container mt-4">
-            <h2>{movie.title}</h2>
-            <p>{movie.genre}</p>
-            <p>{movie.release_year}</p>
-
-            <ReviewForm movieId={movie.id} />
-
-            <h4>Reviews</h4>
-            {movie.reviews && movie.reviews.length > 0 ? (
-                movie.reviews.map((review) => (
-                    <div key={review.id} className="review">
-                        <p>
-                            <strong>Rating:</strong> {review.rating}
-                        </p>
-                        <p>
-                            <strong>Comment:</strong> {review.comment}
-                        </p>
-                    </div>
-                ))
-            ) : (
-                <p>No reviews yet.</p>
-            )}
-        </div>
-    )
-}
-
-export default MovieDetails
+export default MovieDetails;
