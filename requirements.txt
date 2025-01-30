@@ -16,6 +16,7 @@ Flask-Migrate==4.1.0
 Flask-RESTful==0.3.10
 Flask-SQLAlchemy==3.1.1
 greenlet==3.1.1
+gunicorn==23.0.0
 idna==3.10
 ipdb==0.13.9
 ipython==8.31.0
@@ -28,6 +29,7 @@ markdown-it-py==3.0.0
 MarkupSafe==3.0.2
 matplotlib-inline==0.1.7
 mdurl==0.1.2
+packaging==24.2
 parso==0.8.4
 pexpect==4.9.0
 pillow==11.1.0
