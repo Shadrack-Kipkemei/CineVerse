@@ -2,9 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
-
 const MovieDetails = () => {
-  const { id } = useParams(); // Get the movie ID from URL
+  const { id } = useParams();
   const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -29,11 +28,22 @@ const MovieDetails = () => {
   return (
     <div className="container mt-4">
       <div className="card p-4 shadow">
-        <h2>Title: {movie.title}</h2>
+        <div className="text-center">
+          <img
+            src={movie.image_url}
+            alt={movie.title}
+            className="img-fluid"
+            style={{ maxHeight: "500px", objectFit: "contain" }}
+          />
+        </div>
+        <h2 className="mt-3">Title: {movie.title}</h2>
         <p><strong>Genre:</strong> {movie.genre}</p>
         <p><strong>Release Year:</strong> {movie.release_year}</p>
         <p>
-          <strong>Watch:</strong> <a href={movie.link} target="_blank" rel="noopener noreferrer">Click here to watch</a>
+          <strong>Watch:</strong>{" "}
+          <a href={movie.link} target="_blank" rel="noopener noreferrer">
+            Click here to watch
+          </a>
         </p>
       </div>
     </div>

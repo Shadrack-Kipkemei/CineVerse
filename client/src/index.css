@@ -1,4 +1,4 @@
-/* Reset and global settings */
+Reset and global settings
 * {
   margin: 0;
   padding: 0;
@@ -7,7 +7,7 @@
 
 body {
   font-family: 'Arial', sans-serif;
-  background-color: #B3C2D1;  
+  background-color: #B3C2D1 !important;  
   color: #333333;  
   line-height: 1.6;
   padding: 0 15px;
@@ -101,7 +101,7 @@ body {
 
 .navbar .navbar-brand {
   font-size: 1.8rem;
-  color:#112A46;  
+  color:#112A46 !important;  
   font-weight: bold;
   text-transform: uppercase;
   margin-left: 0;
@@ -112,7 +112,7 @@ body {
 }
 
 .navbar-nav .nav-item .nav-link {
-  color: #112A46;  
+  color: #112A46 !important;  
   padding: 10px 15px;
   transition: color 0.3s ease;  
 }

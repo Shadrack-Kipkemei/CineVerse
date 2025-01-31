@@ -12,9 +12,9 @@ function Navbar() {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg custom-navbar">
+    <nav className="navbar navbar-expand-lg custom-navbar" style={{ backgroundColor: '#003366' }}>
       <div className="container">
-        <Link className="navbar-brand" to="/">
+        <Link className="navbar-brand text-white" to="/" style={{ fontWeight: 'bold' }}>
           CineVerse
         </Link>
         <button
@@ -31,24 +31,24 @@ function Navbar() {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ml-auto">
             <li className="nav-item">
-              <Link className="nav-link" to="/">
+              <Link className="nav-link text-white" to="/" style={{ color: '#fff' }}>
                 Home
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/movies">
+              <Link className="nav-link text-white" to="/movies">
                 Movies
               </Link>
             </li>
             {token && (
               <>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/add-movie">
+                  <Link className="nav-link text-white" to="/add-movie">
                     Add Movie
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <button className="btn btn-danger nav-link" onClick={logout}>
+                  <button className="btn btn-danger nav-link" onClick={logout} style={{ color: '#fff' }}>
                     Logout
                   </button>
                 </li>

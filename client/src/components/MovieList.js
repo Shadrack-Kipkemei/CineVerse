@@ -7,6 +7,7 @@ const MovieList = () => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [showAddForm, setShowAddForm] = useState(false);
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -25,7 +26,7 @@ const MovieList = () => {
 
   const addMovie = (newMovie) => {
     setMovies([...movies, newMovie]);
-  }
+  };
 
   const handleDelete = async (movieId) => {
     try {
@@ -52,33 +53,88 @@ const MovieList = () => {
 
   return (
     <div className="container mt-4">
-      <h2 className="mb-4">Movie List</h2>
-      {/* Add Movie Button */}
+      <h2 className="text-primary">Movie List</h2>
+
+      {/* Show Add Movie button */}
       <div className="mb-4">
-        <AddMovieForm addMovie={addMovie} /> 
+        <button
+          className="btn"
+          style={{
+            backgroundColor: "#003366",  // Primary color for the Add Movie button
+            color: "#fff",
+            fontSize: "1rem",
+            padding: "12px 30px",
+            borderRadius: "5px",
+          }}
+          onClick={() => setShowAddForm((prev) => !prev)} // Toggle form visibility
+        >
+          {showAddForm ? "Cancel" : "Add Movie"}
+        </button>
       </div>
 
-      <div className="row">
+      {/* Conditionally render the AddMovieForm */}
+      {showAddForm && <AddMovieForm addMovie={addMovie} />}
+
+      <div className="row mt-4">
         {movies.map((movie) => (
           <div key={movie.id} className="col-md-4 mb-4">
             <div className="card shadow">
+              <img
+                src={movie.image_url}
+                alt={movie.title}
+                className="card-img-top"
+                style={{ height: "400px", objectFit: "cover" }}
+              />
               <div className="card-body text-center">
                 <h5 className="card-title">{movie.title}</h5>
-                {/* <p className="card-text">Genre: {movie.genre}</p> */}
-                {/* <p className="card-text">Release Year: {movie.release_year}</p> */}
-                <a href={movie.link} target="_blank" rel="noopener noreferrer">Watch Now</a>
-                <Link to={`/movies/${movie.id}`} className="btn btn-primary mb-2">
-                  Movie Details
-                </Link>
-                <Link to={`/movies/${movie.id}/review`} className="btn btn-secondary mb-2">
-                  Leave a Review
-                </Link>
-                <button
-                  className="btn btn-danger"
-                  onClick={() => handleDelete(movie.id)}
-                >
-                  Delete
-                </button>
+                <a href={movie.link} target="_blank" rel="noopener noreferrer" className="btn btn-link">
+                  Watch Now
+                </a>
+                <div className="mt-2">
+                  <Link
+                    to={`/movies/${movie.id}`}
+                    className="btn"
+                    style={{
+                      backgroundColor: "#003366",
+                      color: "#fff",
+                    }}
+                    onMouseEnter={(e) => (e.target.style.backgroundColor = "#002244")} // Hover effect
+                    onMouseLeave={(e) => (e.target.style.backgroundColor = "#003366")}
+                  >
+                    Movie Details
+                  </Link>
+                </div>
+                <div className="mt-2">
+                  <Link
+                    to={`/movies/${movie.id}/review`}
+                    className="btn"
+                    style={{
+                      backgroundColor: "#003366",
+                      color: "#fff",
+                    }}
+                    onMouseEnter={(e) => (e.target.style.backgroundColor = "#002244")} // Hover effect
+                    onMouseLeave={(e) => (e.target.style.backgroundColor = "#003366")}
+                  >
+                    Leave a Review
+                  </Link>
+                </div>
+                <div className="mt-2">
+                  <button
+                    className="btn btn-danger btn-sm"
+                    onClick={() => handleDelete(movie.id)}
+                    style={{
+                      backgroundColor: "#ff3b30",  // Red for Delete button
+                      color: "#fff",
+                      fontSize: "0.8rem",
+                      padding: "6px 15px",
+                      borderRadius: "5px",
+                    }}
+                    onMouseEnter={(e) => (e.target.style.backgroundColor = "#ff2a1f")} // Hover effect
+                    onMouseLeave={(e) => (e.target.style.backgroundColor = "#ff3b30")}
+                  >
+                    Delete
+                  </button>
+                </div>
               </div>
             </div>
           </div>

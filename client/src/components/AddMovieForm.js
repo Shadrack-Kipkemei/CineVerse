@@ -26,7 +26,7 @@ function AddMovieForm({ addMovie }) {
                 setTitle('');
                 setGenre('');
                 setReleaseYear('');
-                setLink('')
+                setLink('');
             } else {
                 setError(data.message || 'Failed to add movie');
             }
@@ -38,11 +38,11 @@ function AddMovieForm({ addMovie }) {
 
     return (
         <div className="container mt-4">
-            <h2>Add New Movie</h2>
+            <h2 className="text-primary">Add New Movie</h2>
             {error && <div className="alert alert-danger">{error}</div>}
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className="shadow p-4">
                 <div className="form-group">
-                    <label>Title</label>
+                    <label className="form-label text-dark">Title</label>
                     <input
                         type="text"
                         className="form-control"
@@ -52,7 +52,7 @@ function AddMovieForm({ addMovie }) {
                     />
                 </div>
                 <div className="form-group">
-                    <label>Genre</label>
+                    <label className="form-label text-dark">Genre</label>
                     <input
                         type="text"
                         className="form-control"
@@ -62,7 +62,7 @@ function AddMovieForm({ addMovie }) {
                     />
                 </div>
                 <div className="form-group">
-                    <label>Release Year</label>
+                    <label className="form-label text-dark">Release Year</label>
                     <input
                         type="number"
                         className="form-control"
@@ -72,16 +72,29 @@ function AddMovieForm({ addMovie }) {
                     />
                 </div>
                 <div className="form-group">
-                    <label>Link</label>
+                    <label className="form-label text-dark">Link</label>
                     <input
-                        type="number"
+                        type="text"
                         className="form-control"
                         value={link}
                         onChange={(e) => setLink(e.target.value)}
                         required
                     />
                 </div>
-                <button type="submit" className="btn btn-primary mt-3">
+                <button
+                    type="submit"
+                    className="btn"
+                    style={{
+                        backgroundColor: "#003366", // Primary color for button
+                        color: "#fff",
+                        padding: "12px 30px",
+                        fontSize: "1rem",
+                        borderRadius: "5px",
+                        width: "100%",
+                    }}
+                    onMouseEnter={(e) => (e.target.style.backgroundColor = "#002244")} // Hover effect
+                    onMouseLeave={(e) => (e.target.style.backgroundColor = "#003366")}
+                >
                     Add Movie
                 </button>
             </form>

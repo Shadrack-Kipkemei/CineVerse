@@ -22,6 +22,7 @@ class Movie(db.Model, SerializerMixin):
     genre = db.Column(db.String, nullable=False)
     release_year = db.Column(db.Integer, nullable=False)
     link = db.Column(db.String, nullable=True)
+    image_url = db.Column(db.String, nullable=True)
 
     reviews = db.relationship('Review', backref='movie', lazy=True)
 

@@ -34,15 +34,15 @@ const SignupForm = () => {
 
   return (
     <div className="container">
-      <h2>Sign Up</h2>
+      <h2 className="text-primary">Sign Up</h2>
       <Formik
         initialValues={{ username: '', email: '', password: '' }}
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
         <Form>
-          <div className="form-group">
-            <label>Username</label>
+          <div className="form-group mb-4">
+            <label className="text-dark">Username</label>
             <Field
               type="text"
               className="form-control"
@@ -52,8 +52,8 @@ const SignupForm = () => {
             <ErrorMessage name="username" component="div" className="text-danger" />
           </div>
 
-          <div className="form-group">
-            <label>Email</label>
+          <div className="form-group mb-4">
+            <label className="text-dark">Email</label>
             <Field
               type="email"
               className="form-control"
@@ -63,8 +63,8 @@ const SignupForm = () => {
             <ErrorMessage name="email" component="div" className="text-danger" />
           </div>
 
-          <div className="form-group">
-            <label>Password</label>
+          <div className="form-group mb-4">
+            <label className="text-dark">Password</label>
             <Field
               type="password"
               className="form-control"
@@ -74,7 +74,20 @@ const SignupForm = () => {
             <ErrorMessage name="password" component="div" className="text-danger" />
           </div>
 
-          <button type="submit" className="btn btn-primary">
+          <button
+            type="submit"
+            className="btn"
+            style={{
+              backgroundColor: "#003366", // Primary color for button
+              color: "#fff",
+              padding: "12px 30px",
+              fontSize: "1rem",
+              borderRadius: "5px",
+              width: "100%",
+            }}
+            onMouseEnter={(e) => (e.target.style.backgroundColor = "#002244")} // Hover effect
+            onMouseLeave={(e) => (e.target.style.backgroundColor = "#003366")}
+          >
             Sign Up
           </button>
         </Form>

@@ -18,7 +18,7 @@ function LoginForm() {
 
   return (
     <div className="container">
-      <h2>Login</h2>
+      <h2 className="text-primary">Login</h2>
       <Formik
         initialValues={{ email: '', password: '' }}
         validate={(values) => {
@@ -30,8 +30,8 @@ function LoginForm() {
         onSubmit={handleSubmit}
       >
         <Form>
-          <div className="form-group">
-            <label>Email</label>
+          <div className="form-group mb-4">
+            <label className="text-dark">Email</label>
             <Field
               type="email"
               className="form-control"
@@ -41,8 +41,8 @@ function LoginForm() {
             <ErrorMessage name="email" component="div" className="text-danger" />
           </div>
 
-          <div className="form-group">
-            <label>Password</label>
+          <div className="form-group mb-4">
+            <label className="text-dark">Password</label>
             <Field
               type="password"
               className="form-control"
@@ -52,7 +52,20 @@ function LoginForm() {
             <ErrorMessage name="password" component="div" className="text-danger" />
           </div>
 
-          <button type="submit" className="btn btn-primary">
+          <button
+            type="submit"
+            className="btn"
+            style={{
+              backgroundColor: "#003366", // Primary color for button
+              color: "#fff",
+              padding: "12px 30px",
+              fontSize: "1rem",
+              borderRadius: "5px",
+              width: "100%",
+            }}
+            onMouseEnter={(e) => (e.target.style.backgroundColor = "#002244")} // Hover effect
+            onMouseLeave={(e) => (e.target.style.backgroundColor = "#003366")}
+          >
             Login
           </button>
         </Form>

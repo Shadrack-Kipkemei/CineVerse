@@ -70,8 +70,8 @@ class MovieListResource(Resource):
         new_movie = Movie(
             title=data["title"],
             genre=data["genre"],
-            release_year=data["release_year"],
-            link=data["link"]
+            release_year=data["release_year"]
+            
         )
 
         db.session.add(new_movie)
