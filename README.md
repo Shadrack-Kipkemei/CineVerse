@@ -1,357 +1,239 @@
-# Phase 4 Full-Stack Application Project Template
+## CineVerse
 
-## Learning Goals
+Date, 2025/01/31 ***Shadrack Kipkemei***
 
-- Discuss the basic directory structure of a full-stack Flask/React application.
-- Carry out the first steps in creating your Phase 4 project.
 
----
+Welcome to CineVerse! CineVerse is a full-stack web application that allows users to explore, add, rate, and review movies. Users can sign up, log in, and interact with a wide variety of movies, providing a comprehensive movie-watching experience.
 
-## Introduction
 
-Fork and clone this lesson for a template for your full-stack application. Take
-a look at the directory structure before we begin (NOTE: node_modules will be
-generated in a subsequent step):
+## Table of Contents
 
-```console
-$ tree -L 2
-$ # the -L argument limits the depth at which we look into the directory structure
-.
-├── CONTRIBUTING.md
-├── LICENSE.md
-├── Pipfile
-├── README.md
-├── client
-│   ├── README.md
-│   ├── package.json
-│   ├── public
-│   └── src
-└── server
-    ├── app.py
-    ├── config.py
-    ├── models.py
-    └── seed.py
-```
+* Features
 
-A `migrations` folder will be added to the `server` directory in a later step.
+* Technologies Used
 
-The `client` folder contains a basic React application, while the `server`
-folder contains a basic Flask application. You will adapt both folders to
-implement the code for your project .
+* Installation
 
-NOTE: If you did not previously install `tree` in your environment setup, MacOS
-users can install this with the command `brew install tree`. WSL and Linux users
-can run `sudo apt-get install tree` to download it as well.
+* Backend Setup
 
-## Where Do I Start?
+* Frontend Setup
 
-Just as with your Phase 3 Project, this will likely be one of the biggest
-projects you've undertaken so far. Your first task should be creating a Git
-repository to keep track of your work and roll back any undesired changes.
+* Usage
 
-### Removing Existing Git Configuration
+* API Endpoints
 
-If you're using this template, start off by removing the existing metadata for
-Github and Canvas. Run the following command to carry this out:
+* Database Models
 
-```console
-$ rm -rf .git .canvas
-```
+* Seeding the Database
 
-The `rm` command removes files from your computer's memory. The `-r` flag tells
-the console to remove _recursively_, which allows the command to remove
-directories and the files within them. `-f` removes them permanently.
+* Contributing
 
-`.git` contains this directory's configuration to track changes and push to
-Github (you want to track and push _your own_ changes instead), and `.canvas`
-contains the metadata to create a Canvas page from your Git repo. You don't have
-the permissions to edit our Canvas course, so it's not worth keeping around.
+* License
 
-### Creating Your Own Git Repo
 
-First things first- rename this directory! Once you have an idea for a name,
-move one level up with `cd ..` and run
-`mv python-p4-project-template <new-directory-name>` to change its name (replace
-<new-directory-name> with an appropriate project directory name).
+## Features
 
-> **Note: If you typed the `mv` command in a terminal within VS Code, you should
-> close VS Code then reopen it.**
+* User Authentication (Sign Up, Login, Logout)
 
-> **Note: `mv` actually stands for "move", but your computer interprets this
-> rename as a move from a directory with the old name to a directory with a new
-> name.**
+* Browse and Search Movies
 
-`cd` back into your new directory and run `git init` to create a local git
-repository. Add all of your local files to version control with `git add --all`,
-then commit them with `git commit -m'initial commit'`. (You can change the
-message here- this one is just a common choice.)
+* Add New Movies
 
-Navigate to [GitHub](https://github.com). In the upper-right corner of the page,
-click on the "+" dropdown menu, then select "New repository". Enter the name of
-your local repo, choose whether you would like it to be public or private, make
-sure "Initialize this repository with a README" is unchecked (you already have
-one), then click "Create repository".
+* View Movie Details
 
-Head back to the command line and enter
-`git remote add origin git@github.com:github-username/new-repository-name.git`.
-NOTE: Replace `github-username` with your github username, and
-`new-repository-name` with the name of your new repository. This command will
-map the remote repository to your local repository. Finally, push your first
-commit with `git push -u origin main`.
+* Submit and View Reviews
 
-Your project is now version-controlled locally and online. This will allow you
-to create different versions of your project and pick up your work on a
-different machine if the need arises.
+* Responsive UI with Bootstrap
 
----
 
-## Setup
+## Technologies Used
 
-### `server/`
+### Frontend
 
-The `server/` directory contains all of your backend code.
+* React
 
-`app.py` is your Flask application. You'll want to use Flask to build a simple
-API backend like we have in previous modules. You should use Flask-RESTful for
-your routes. You should be familiar with `models.py` and `seed.py` by now, but
-remember that you will need to use Flask-SQLAlchemy, Flask-Migrate, and
-SQLAlchemy-Serializer instead of SQLAlchemy and Alembic in your models.
+* React Router
 
-The project contains a default `Pipfile` with some basic dependencies. You may
-adapt the `Pipfile` if there are additional dependencies you want to add for
-your project.
+* Formik (for form handling)
 
-To download the dependencies for the backend server, run:
+* Axios (for API requests)
 
-```console
-pipenv install
-pipenv shell
-```
+* Bootstrap (for styling)
 
-You can run your Flask API on [`localhost:5555`](http://localhost:5555) by
-running:
+* HTML/CSS
 
-```console
-python server/app.py
-```
+### Backend
 
-Check that your server serves the default route `http://localhost:5555`. You
-should see a web page with the heading "Project Server".
+* Flask
 
-### `client/`
+* Flask-RESTful
 
-The `client/` directory contains all of your frontend code. The file
-`package.json` has been configured with common React application dependencies,
-include `react-router-dom`. The file also sets the `proxy` field to forward
-requests to `"http://localhost:5555". Feel free to change this to another port-
-just remember to configure your Flask app to use another port as well!
+* Flask-Bcrypt (for password hashing)
 
-To download the dependencies for the frontend client, run:
+* Flask-CORS (for handling CORS)
 
-```console
-npm install --prefix client
-```
+* Flask-Migrate (for database migrations)
 
-You can run your React app on [`localhost:3000`](http://localhost:3000) by
-running:
+* SQLAlchemy (for ORM)
 
-```sh
-npm start --prefix client
-```
+* SQLite (as the default database)
 
-Check that your the React client displays a default page
-`http://localhost:3000`. You should see a web page with the heading "Project
-Client".
 
-## Generating Your Database
+## Installation
 
-NOTE: The initial project directory structure does not contain the `instance` or
-`migrations` folders. Change into the `server` directory:
+### Prerequisites
+* Node.jsand npm installed
 
-```console
-cd server
-```
+* Python and pip installed
 
-Then enter the commands to create the `instance` and `migrations` folders and
-the database `app.db` file:
+## Backend Setup
+1. Clone the repository:
 
 ```
-flask db init
-flask db upgrade head
+git clone https://github.com/Shadrack-Kipkemei/CineVerse
+cd CineVerse/backend
 ```
-
-Type `tree -L 2` within the `server` folder to confirm the new directory
-structure:
-
-```console
-.
-├── app.py
-├── config.py
-├── instance
-│   └── app.db
-├── migrations
-│   ├── README
-│   ├── __pycache__
-│   ├── alembic.ini
-│   ├── env.py
-│   ├── script.py.mako
-│   └── versions
-├── models.py
-└── seed.py
-```
-
-Edit `models.py` and start creating your models. Import your models as needed in
-other modules, i.e. `from models import ...`.
-
-Remember to regularly run
-`flask db revision --autogenerate -m'<descriptive message>'`, replacing
-`<descriptive message>` with an appropriate message, and `flask db upgrade head`
-to track your modifications to the database and create checkpoints in case you
-ever need to roll those modifications back.
-
-> **Tip: It's always a good idea to start with an empty revision! This allows
-> you to roll all the way back while still holding onto your database. You can
-> create this empty revision with `flask db revision -m'Create DB'`.**
-
-If you want to seed your database, now would be a great time to write out your
-`seed.py` script and run it to generate some test data. Faker has been included
-in the Pipfile if you'd like to use that library.
-
----
-
-#### `config.py`
-
-When developing a large Python application, you might run into a common issue:
-_circular imports_. A circular import occurs when two modules import from one
-another, such as `app.py` and `models.py`. When you create a circular import and
-attempt to run your app, you'll see the following error:
-
-```console
-ImportError: cannot import name
-```
-
-If you're going to need an object in multiple modules like `app` or `db`,
-creating a _third_ module to instantiate these objects can save you a great deal
-of circular grief. Here's a good start to a Flask config file (you may need more
-if you intend to include features like authentication and passwords):
-
-```py
-# Standard library imports
-
-# Remote library imports
-from flask import Flask
-from flask_cors import CORS
-from flask_migrate import Migrate
-from flask_restful import Api
-from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import MetaData
-
-# Local imports
-
-# Instantiate app, set attributes
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.json.compact = False
-
-# Define metadata, instantiate db
-metadata = MetaData(naming_convention={
-    "fk": "fk_%(table_name)s_%(column_0_name)s_%(referred_table_name)s",
-})
-db = SQLAlchemy(metadata=metadata)
-migrate = Migrate(app, db)
-db.init_app(app)
-
-# Instantiate REST API
-api = Api(app)
-
-# Instantiate CORS
-CORS(app)
+2. Create a virtual environment and activate it:
 
 ```
-
-Now let's review that last line...
-
-#### CORS
-
-CORS (Cross-Origin Resource Sharing) is a system that uses HTTP headers to
-determine whether resources from different servers-of-origin can be accessed. If
-you're using the fetch API to connect your frontend to your Flask backend, you
-need to configure CORS on your Flask application instance. Lucky for us, that
-only takes one line:
-
-```py
-CORS(app)
+python3 -m venv venv
+source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
+```
+3. Install the required packages:
 
 ```
+pip install -r requirements.txt
+```
+4. Set up the environment variables:
 
-By default, Flask-CORS enables CORS on all routes in your application with all
-fetching servers. You can also specify the resources that allow CORS. The
-following specifies that routes beginning with `api/` allow CORS from any
-originating server:
-
-```py
-CORS(app, resources={r"/api/*": {"origins": "*"}})
+Create a .env file in the backend directory and add the following:
+```
+DATABASE_URL=sqlite:///movie_app.db
+SECRET_KEY=your-secret-key
+```
+5. Initialize the database:
 
 ```
-
-You can also set this up resource-by-resource by importing and using the
-`@cross_origin` decorator:
-
-```py
-@app.route("/")
-@cross_origin()
-def howdy():
-  return "Howdy partner!"
+flask db upgrade
+```
+6. Seed the database:
 
 ```
+python seed.py
+```
+7. Run the backend server:
 
----
+```
+flask run
+```
 
-## Updating Your README.md
 
-`README.md` is a Markdown file that describes your project. These files can be
-used in many different ways- you may have noticed that we use them to generate
-entire Canvas lessons- but they're most commonly used as homepages for online
-Git repositories. **When you develop something that you want other people to
-use, you need to have a README.**
+## Frontend Setup
+1. Navigate to the frontend directory:
+```
+cd ../frontend
+```
+2. Install the dependencies:
 
-Markdown is not a language that we cover in Flatiron's Software Engineering
-curriculum, but it's not a particularly difficult language to learn (if you've
-ever left a comment on Reddit, you might already know the basics). Refer to the
-cheat sheet in this lesson's resources for a basic guide to Markdown.
+```
+npm install
+```
+3. Start the React development server:
 
-### What Goes into a README?
+```
+npm start
+```
 
-This README should serve as a template for your own- go through the important
-files in your project and describe what they do. Each file that you edit (you
-can ignore your migration files) should get at least a paragraph. Each function
-should get a small blurb.
 
-You should descibe your application first, and with a good level of detail. The
-rest should be ordered by importance to the user. (Probably routes next, then
-models.)
+## Usage
+1. Access the application:
 
-Screenshots and links to resources that you used throughout are also useful to
-users and collaborators, but a little more syntactically complicated. Only add
-these in if you're feeling comfortable with Markdown.
+Open your browser and go to ```http://localhost:3000``` to view the CineVerse application.
 
----
+2. Explore the features:
 
-## Conclusion
+* Sign up and log in to your account.
 
-A lot of work goes into a full-stack application, but it all relies on concepts
-that you've practiced thoroughly throughout this phase. Hopefully this template
-and guide will get you off to a good start with your Phase 4 Project.
+* Browse the movie list and click on movie titles to view details.
 
-Happy coding!
+* Add new movies and submit reviews.
 
----
+* Navigate through the app using the navbar.
 
-## Resources
 
-- [Setting up a respository - Atlassian](https://www.atlassian.com/git/tutorials/setting-up-a-repository)
-- [Create a repo- GitHub Docs](https://docs.github.com/en/get-started/quickstart/create-a-repo)
-- [Markdown Cheat Sheet](https://www.markdownguide.org/cheat-sheet/)
-- [Python Circular Imports - StackAbuse](https://stackabuse.com/python-circular-imports/)
-- [Flask-CORS](https://flask-cors.readthedocs.io/en/latest/)
+## API Endpoints
+
+### User Endpoints
+
+* ```POST /users```: Create a new user
+
+* ```POST /login```: Log in a user
+
+### Movie Endpoints
+* ```GET /movies```: Get a list of all movies
+
+* ```POST /movies```: Add a new movie
+
+* ```GET /movies/:id```: Get details of a specific movie
+
+* ```DELETE /movies/:id```: Delete a movie by ID
+
+### Review Endpoints
+* ```GET /reviews```: Get a list of all reviews
+
+* ```POST /reviews```: Submit a new review
+
+
+## Database Models
+
+### User Model
+* ```id```: Integer, primary key
+
+* ```username```: String, required
+
+* ```email```: String, required, unique
+
+* ```password```: String, required
+
+* ```reviews```: Relationship with Review model
+
+### Movie Model
+*```id```: Integer, primary key
+
+* ```title```: String, required
+
+* ```genre```: String, required
+
+* ```release_year```: Integer, required
+
+* ```link```: String, optional
+
+* ```image_url```: String, optional
+
+* ```reviews```: Relationship with Review model
+
+### Review Model
+* ```id```: Integer, primary key
+
+* ```rating```: Integer, required
+
+* ```comment```: String, required
+
+* ```movie_id```: Foreign key to Movie model, required
+
+* ```user_id```: Foreign key to User model, required
+
+
+## Seeding the Database
+To populate the database with initial data, run the following command:
+
+```
+python seed.py
+```
+
+## Contributing
+Contributions are welcome! If you'd like to contribute to this project, please fork the repository and create a pull request with your changes.
+
+
+## License
+The content of this project is licensed under the MIT license Copyright (c) 2025.
