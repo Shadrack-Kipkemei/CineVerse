@@ -1,24 +1,24 @@
+# app.py
 from flask import Flask, request, jsonify
 from flask_restful import Api, Resource
-from flask_bcrypt import Bcrypt
-from server.models import db, User, Movie, Review
-import bcrypt  
 from flask_cors import CORS
-from flask_migrate import Migrate 
-from flask_sqlalchemy import SQLAlchemy 
-
+from .extensions import db, bcrypt, migrate  # Import from extensions.py
+from .models import User, Movie, Review
+from .config import Config
 
 app = Flask(__name__)
 CORS(app)
-app.config.from_object('server.config.Config')
+app.config.from_object(Config)
 
-# CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}}) 
-
+# Initialize the db, bcrypt, and migrate objects
 db.init_app(app)
-bcrypt = Bcrypt(app)  
+bcrypt.init_app(app)
+migrate.init_app(app, db)
 
-migrate = Migrate(app, db)
 api = Api(app)
+
+# Define your resources (User, Movie, Review routes as before)
+# ...
 
 # User routes
 class UserListResource(Resource):

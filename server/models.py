@@ -1,8 +1,8 @@
-from flask_sqlalchemy import SQLAlchemy
-from flask_bcrypt import Bcrypt
+# from flask_sqlalchemy import SQLAlchemy
+# from flask_bcrypt import Bcrypt
 from sqlalchemy_serializer import SerializerMixin
 
-db = SQLAlchemy()
+from .extensions import db
 
 class User(db.Model, SerializerMixin):
     __tablename__ = 'users'
