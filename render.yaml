@@ -1,8 +1,10 @@
+render.yaml:
 services:
   - type: web
-    name: dummy-flask-backend
+    name: movies-flask-backend
     env: python
     plan: free
-    buildCommand: ""
+    buildCommand: |
+      pip install -r requirements.txt
+      flask db upgrade  # Apply migrations
     startCommand: gunicorn server.app:app
- 
