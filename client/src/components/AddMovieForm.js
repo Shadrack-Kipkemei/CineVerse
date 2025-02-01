@@ -12,7 +12,7 @@ function AddMovieForm({ addMovie }) {
         const movieData = { title, genre, release_year: releaseYear, link };
 
         try {
-            const response = await fetch('http://localhost:5000/movies', {
+            const response = await fetch('https://cineverse-1ekx.onrender.com/movies', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

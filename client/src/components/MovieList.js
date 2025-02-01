@@ -30,7 +30,7 @@ const MovieList = () => {
 
   const handleDelete = async (movieId) => {
     try {
-      const response = await fetch(`http://localhost:5000/movies/${movieId}`, {
+      const response = await fetch(`https://cineverse-1ekx.onrender.com/movies/${movieId}`, {
         method: "DELETE",
       });
       if (response.ok) {

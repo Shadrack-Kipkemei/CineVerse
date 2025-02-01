@@ -23,7 +23,7 @@ const SignupForm = () => {
 
   const handleSubmit = async (values) => {
     try {
-      const response = await axios.post('http://localhost:5000/users', values);
+      const response = await axios.post('https://cineverse-1ekx.onrender.com/users', values);
       if (response.status === 201) {
         navigate('/login'); // Redirect to login after successful signup
       }

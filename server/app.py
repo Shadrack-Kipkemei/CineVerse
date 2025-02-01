@@ -7,7 +7,7 @@ from .models import User, Movie, Review
 from .config import Config
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})  # Replace with your front-end URL
 app.config.from_object(Config)
 
 # Initialize the db, bcrypt, and migrate objects

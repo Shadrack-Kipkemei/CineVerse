@@ -26,7 +26,7 @@
 
 import axios from "axios";
 
-const API_URL = "http://localhost:5000";  // Backend URL
+const API_URL = "https://cineverse-1ekx.onrender.com";  // Backend URL
 
 const getAuthToken = () => localStorage.getItem("token");
 
