@@ -69,7 +69,8 @@ class MovieListResource(Resource):
         new_movie = Movie(
             title=data["title"],
             genre=data["genre"],
-            release_year=data["release_year"]
+            release_year=data["release_year"],
+            link=data["link"]
             
         )
 
