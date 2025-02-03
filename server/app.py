@@ -7,7 +7,7 @@ from .models import User, Movie, Review
 from .config import Config
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "https://cine-verse-bice.vercel.app"}})  
+CORS(app, resources={r"/*": {"origins": ["http://localhost:3000", "https://cine-verse-bice.vercel.app"]}})  
 app.config.from_object(Config)
 
 # Initialize the db, bcrypt, and migrate objects
