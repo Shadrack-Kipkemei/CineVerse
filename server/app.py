@@ -2,12 +2,12 @@
 from flask import Flask, request, jsonify
 from flask_restful import Api, Resource
 from flask_cors import CORS
-from .extensions import db, bcrypt, migrate  # Import from extensions.py
+from .extensions import db, bcrypt, migrate  
 from .models import User, Movie, Review
 from .config import Config
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "https://cine-verse-bice.vercel.app"}})  # Replace with your front-end URL
+CORS(app, resources={r"/*": {"origins": "https://cine-verse-bice.vercel.app"}})  
 app.config.from_object(Config)
 
 # Initialize the db, bcrypt, and migrate objects
@@ -17,8 +17,7 @@ migrate.init_app(app, db)
 
 api = Api(app)
 
-# Define your resources (User, Movie, Review routes as before)
-# ...
+
 
 # User routes
 class UserListResource(Resource):

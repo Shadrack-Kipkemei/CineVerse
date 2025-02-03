@@ -22,7 +22,7 @@ function AddMovieForm({ addMovie }) {
 
             const data = await response.json();
             if (response.ok) {
-                addMovie(data); // This will add the movie to the list in the parent component
+                addMovie(data); 
                 setTitle('');
                 setGenre('');
                 setReleaseYear('');

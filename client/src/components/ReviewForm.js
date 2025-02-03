@@ -28,7 +28,7 @@ const ReviewForm = () => {
         rating,
         comment,
         movie_id: id,
-        user_id: 1  // Assuming user_id 1 for now
+        user_id: 1  // Assuming user_id 1
       });
       alert("Review submitted successfully!");
       setRating("");

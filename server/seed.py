@@ -33,6 +33,6 @@ with app.app_context():
     db.session.add(movie10)
     db.session.commit()
 
-    # Use inspect to get the table names
+    
     inspector = db.inspect(db.engine)
     print(inspector.get_table_names())
